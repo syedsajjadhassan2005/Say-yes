@@ -92,14 +92,14 @@ animation:float 4s linear infinite;
 <body>
 
 <div class="container">
-<h1 id="question">Will you be my girlfriend? 💖</h1>
+<h1 id="question">Will you be my wife? 💖</h1>
 <button id="yes">Yes 💖</button>
 </div>
 
 <button id="no">No 😢</button>
 
 <div class="popup" id="popup">
-Yay! I knew you'd say yes ❤️
+yes I knew ! You'd say yes my pyari dudu bubu my sexy alishu ❤️❤️
 </div>
 
 <script>
@@ -109,6 +109,71 @@ const yesBtn = document.getElementById("yes");
 const popup = document.getElementById("popup");
 const question = document.getElementById("question");
 
+function moveButton(){
+
+let btnWidth = noBtn.offsetWidth;
+let btnHeight = noBtn.offsetHeight;
+
+let x = Math.random() * (window.innerWidth - btnWidth);
+let y = Math.random() * (window.innerHeight - btnHeight);
+
+noBtn.style.left = x + "px";
+noBtn.style.top = y + "px";
+
+}
+
+/* move when cursor touches button */
+noBtn.addEventListener("mouseenter", moveButton);
+
+/* mobile touch */
+noBtn.addEventListener("touchstart", function(e){
+e.preventDefault();
+moveButton();
+});
+
+/* also randomly move sometimes */
+document.addEventListener("mousemove", function(){
+if(Math.random() < 0.02){
+moveButton();
+}
+});
+
+yesBtn.onclick = function(){
+
+popup.style.display="block";
+question.innerText="yes I knew ! You'd say yes my pyari dudu bubu my sexy alishu ❤️❤️";
+
+createHearts();
+
+};
+
+function createHearts(){
+
+setInterval(function(){
+
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="💖";
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(20+Math.random()*30)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(function(){
+heart.remove();
+},4000);
+
+},300);
+
+}
+
+moveButton();
+
+</script>
+
+</body>
+</html>
 function moveButton(){
 
 let btnWidth = noBtn.offsetWidth;
